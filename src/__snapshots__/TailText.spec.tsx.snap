@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`children - это не только ценный актив, но и три - четыре... Ну, и другие числа 1`] = `
+<div
+  className="react-tail-text "
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="react-tail-text__fulltext"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    34
+  </div>
+  <div
+    className="react-tail-text__tail"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    4
+  </div>
+</div>
+`;
+
+exports[`it is alive 1`] = `
+<div
+  className="react-tail-text "
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="react-tail-text__fulltext"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    it is alive
+  </div>
+  <div
+    className="react-tail-text__tail"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    ive
+  </div>
+</div>
+`;
+
+exports[`it is alive 2`] = `
+<div
+  className="react-tail-text "
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="react-tail-text__fulltext"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    да будет свет
+  </div>
+  <div
+    className="react-tail-text__tail"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    т
+  </div>
+</div>
+`;
+
+exports[`Выводится предупреждение о некорректном параметре teilLength 1`] = `
+<div
+  className="react-tail-text "
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="react-tail-text__fulltext"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    Краткость - сестра таланта
+  </div>
+  <div
+    className="react-tail-text__tail"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    Краткость - сестра таланта
+  </div>
+</div>
+`;
+
+exports[`Кастомный className добавляется к элементу 1`] = `
+<div
+  className="react-tail-text hello"
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="react-tail-text__fulltext"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    Модифицировать вшитые классы пока нельзя
+  </div>
+  <div
+    className="react-tail-text__tail"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    ьзя
+  </div>
+</div>
+`;
+
+exports[`Текст подскази при наведении добавлен в атрибут title 1`] = `
+<div
+  className="react-tail-text "
+  style={
+    Object {
+      "whiteSpace": "nowrap",
+      "width": "100%",
+    }
+  }
+  title="А вот и сама подсказка"
+>
+  <div
+    className="react-tail-text__fulltext"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+      }
+    }
+  >
+    Подсказка при наведении добавлена к wrapper элементу в тег title
+  </div>
+  <div
+    className="react-tail-text__tail"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    tle
+  </div>
+</div>
+`;
