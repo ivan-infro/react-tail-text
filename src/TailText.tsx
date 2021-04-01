@@ -1,5 +1,6 @@
-import React, { memo, useEffect, useRef, useMemo } from "react";
+import React, { memo, useEffect, useCallback, useRef, useMemo } from "react";
 import addToObserver from "./observer";
+import { fulltextStyle, startStyle, tailStyle, wrapperStyle } from "./styles";
 
 type TailTextPros = {
   /**
@@ -25,42 +26,33 @@ type TailTextPros = {
   className?: string;
 };
 
-const wrapperStyle: React.CSSProperties = {
-  width: "100%",
-  whiteSpace: "nowrap",
-};
-
-const fulltextStyle: React.CSSProperties = {
-  display: "inline-block",
-  textOverflow: "ellipsis",
-  overflow: "hidden",
-  whiteSpace: "nowrap",
-};
-
-const tailStyle: React.CSSProperties = {
-  display: "inline-block",
-  width: 0,
-  whiteSpace: "nowrap",
-  overflow: "hidden",
-};
-
 const fulltextClassName = "react-tail-text__fulltext";
+const startClassName = "react-tail-text__start";
 const tailClassName = "react-tail-text__tail";
 
 const TailText = (props: TailTextPros) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const tail = useMemo(() => {
+  const selectFulltext = useCallback(() => {
+    if (!wrapperRef.current || typeof window === "undefined") return;
+    window.getSelection()?.selectAllChildren(wrapperRef.current);
+  }, [wrapperRef.current]);
+
+  const [start, tail] = useMemo(() => {
     const fulltextString = props.children.toString();
 
     if (props.tailLength > fulltextString.length) {
       console.warn("tailLength не может быть больше длины исходной строки!");
     }
 
-    return fulltextString.substr(
-      fulltextString.length - props.tailLength,
-      props.tailLength
-    );
+    return [
+      fulltextString.substr(0, fulltextString.length - props.tailLength),
+
+      fulltextString.substr(
+        fulltextString.length - props.tailLength,
+        props.tailLength
+      ),
+    ];
   }, [props.tailLength, props.children]);
 
   useEffect(() => {
@@ -72,10 +64,15 @@ const TailText = (props: TailTextPros) => {
     const fulltextElement = wrapperRef.current.querySelector<HTMLDivElement>(
       `.${fulltextClassName}`
     );
+
+    const startElement = wrapperRef.current.querySelector<HTMLDivElement>(
+      `.${startClassName}`
+    );
+
     const tailElement = wrapperRef.current.querySelector<HTMLDivElement>(
       `.${tailClassName}`
     );
-    if (!fulltextElement || !tailElement) {
+    if (!fulltextElement || !tailElement || !startElement) {
       console.error("fulltextElement или tailElement не найдены");
       return;
     }
@@ -87,7 +84,8 @@ const TailText = (props: TailTextPros) => {
       fulltextElement,
       fulltextWidth,
       tailElement,
-      tailWidth
+      tailWidth,
+      startElement
     );
   }, [props.tailLength, props.children, props.className, wrapperRef.current]);
 
@@ -102,9 +100,13 @@ const TailText = (props: TailTextPros) => {
       ref={wrapperRef}
       className={className}
       style={wrapperStyle}
+      onDoubleClick={selectFulltext}
     >
       <div className={fulltextClassName} style={fulltextStyle}>
         {props.children}
+      </div>
+      <div className={startClassName} style={startStyle}>
+        {start}
       </div>
       <div className={tailClassName} style={tailStyle}>
         {tail}

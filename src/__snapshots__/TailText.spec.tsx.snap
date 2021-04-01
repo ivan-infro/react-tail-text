@@ -3,6 +3,7 @@
 exports[`children - это не только ценный актив, но и три - четыре... Ну, и другие числа 1`] = `
 <div
   className="react-tail-text "
+  onDoubleClick={[Function]}
   style={
     Object {
       "whiteSpace": "nowrap",
@@ -24,6 +25,20 @@ exports[`children - это не только ценный актив, но и т
     34
   </div>
   <div
+    className="react-tail-text__start"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    3
+  </div>
+  <div
     className="react-tail-text__tail"
     style={
       Object {
@@ -42,6 +57,7 @@ exports[`children - это не только ценный актив, но и т
 exports[`it is alive 1`] = `
 <div
   className="react-tail-text "
+  onDoubleClick={[Function]}
   style={
     Object {
       "whiteSpace": "nowrap",
@@ -63,6 +79,20 @@ exports[`it is alive 1`] = `
     it is alive
   </div>
   <div
+    className="react-tail-text__start"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    it is al
+  </div>
+  <div
     className="react-tail-text__tail"
     style={
       Object {
@@ -81,6 +111,7 @@ exports[`it is alive 1`] = `
 exports[`it is alive 2`] = `
 <div
   className="react-tail-text "
+  onDoubleClick={[Function]}
   style={
     Object {
       "whiteSpace": "nowrap",
@@ -102,6 +133,20 @@ exports[`it is alive 2`] = `
     да будет свет
   </div>
   <div
+    className="react-tail-text__start"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    да будет све
+  </div>
+  <div
     className="react-tail-text__tail"
     style={
       Object {
@@ -120,6 +165,7 @@ exports[`it is alive 2`] = `
 exports[`Выводится предупреждение о некорректном параметре teilLength 1`] = `
 <div
   className="react-tail-text "
+  onDoubleClick={[Function]}
   style={
     Object {
       "whiteSpace": "nowrap",
@@ -141,6 +187,20 @@ exports[`Выводится предупреждение о некорректн
     Краткость - сестра таланта
   </div>
   <div
+    className="react-tail-text__start"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    
+  </div>
+  <div
     className="react-tail-text__tail"
     style={
       Object {
@@ -159,6 +219,7 @@ exports[`Выводится предупреждение о некорректн
 exports[`Кастомный className добавляется к элементу 1`] = `
 <div
   className="react-tail-text hello"
+  onDoubleClick={[Function]}
   style={
     Object {
       "whiteSpace": "nowrap",
@@ -180,6 +241,20 @@ exports[`Кастомный className добавляется к элементу
     Модифицировать вшитые классы пока нельзя
   </div>
   <div
+    className="react-tail-text__start"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    Модифицировать вшитые классы пока нел
+  </div>
+  <div
     className="react-tail-text__tail"
     style={
       Object {
@@ -198,6 +273,7 @@ exports[`Кастомный className добавляется к элементу
 exports[`Текст подскази при наведении добавлен в атрибут title 1`] = `
 <div
   className="react-tail-text "
+  onDoubleClick={[Function]}
   style={
     Object {
       "whiteSpace": "nowrap",
@@ -218,6 +294,20 @@ exports[`Текст подскази при наведении добавлен 
     }
   >
     Подсказка при наведении добавлена к wrapper элементу в тег title
+  </div>
+  <div
+    className="react-tail-text__start"
+    style={
+      Object {
+        "display": "inline-block",
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+        "whiteSpace": "nowrap",
+        "width": 0,
+      }
+    }
+  >
+    Подсказка при наведении добавлена к wrapper элементу в тег ti
   </div>
   <div
     className="react-tail-text__tail"
