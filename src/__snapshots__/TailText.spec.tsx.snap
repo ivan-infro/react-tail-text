@@ -1,215 +1,243 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`children - это не только ценный актив, но и три - четыре... Ну, и другие числа 1`] = `
+.c1 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c0 {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.c0:hover {
+  color: red;
+}
+
+.c0:focus-within {
+  color: blue;
+}
+
+.c0:active {
+  color: purple;
+}
+
+.c0.react-tail-text_tailed::after {
+  content: "4";
+}
+
+.c2 {
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.c2.react-tail-text__fulltext_selected {
+  background: yellow;
+}
+
 <div
-  className="react-tail-text "
+  className="react-tail-text c0"
   onDoubleClick={[Function]}
-  style={
-    Object {
-      "whiteSpace": "nowrap",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="react-tail-text__fulltext"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-      }
-    }
-  >
-    34
-  </div>
-  <div
-    className="react-tail-text__start"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
-  >
-    3
-  </div>
-  <div
-    className="react-tail-text__tail"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
+    className="c1 react-tail-text__tail"
   >
     4
+  </div>
+  <div
+    className="c2 react-tail-text__fulltext"
+  >
+    34
   </div>
 </div>
 `;
 
 exports[`it is alive 1`] = `
+.c1 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c0 {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.c0:hover {
+  color: red;
+}
+
+.c0:focus-within {
+  color: blue;
+}
+
+.c0:active {
+  color: purple;
+}
+
+.c0.react-tail-text_tailed::after {
+  content: "ive";
+}
+
+.c2 {
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.c2.react-tail-text__fulltext_selected {
+  background: yellow;
+}
+
 <div
-  className="react-tail-text "
+  className="react-tail-text c0"
   onDoubleClick={[Function]}
-  style={
-    Object {
-      "whiteSpace": "nowrap",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="react-tail-text__fulltext"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-      }
-    }
-  >
-    it is alive
-  </div>
-  <div
-    className="react-tail-text__start"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
-  >
-    it is al
-  </div>
-  <div
-    className="react-tail-text__tail"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
+    className="c1 react-tail-text__tail"
   >
     ive
+  </div>
+  <div
+    className="c2 react-tail-text__fulltext"
+  >
+    it is alive
   </div>
 </div>
 `;
 
 exports[`it is alive 2`] = `
+.c1 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c0 {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.c0:hover {
+  color: red;
+}
+
+.c0:focus-within {
+  color: blue;
+}
+
+.c0:active {
+  color: purple;
+}
+
+.c0.react-tail-text_tailed::after {
+  content: "т";
+}
+
+.c2 {
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.c2.react-tail-text__fulltext_selected {
+  background: yellow;
+}
+
 <div
-  className="react-tail-text "
+  className="react-tail-text c0"
   onDoubleClick={[Function]}
-  style={
-    Object {
-      "whiteSpace": "nowrap",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="react-tail-text__fulltext"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-      }
-    }
-  >
-    да будет свет
-  </div>
-  <div
-    className="react-tail-text__start"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
-  >
-    да будет све
-  </div>
-  <div
-    className="react-tail-text__tail"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
+    className="c1 react-tail-text__tail"
   >
     т
+  </div>
+  <div
+    className="c2 react-tail-text__fulltext"
+  >
+    да будет свет
   </div>
 </div>
 `;
 
 exports[`Выводится предупреждение о некорректном параметре teilLength 1`] = `
+.c1 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c0 {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.c0:hover {
+  color: red;
+}
+
+.c0:focus-within {
+  color: blue;
+}
+
+.c0:active {
+  color: purple;
+}
+
+.c0.react-tail-text_tailed::after {
+  content: "Краткость - сестра таланта";
+}
+
+.c2 {
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.c2.react-tail-text__fulltext_selected {
+  background: yellow;
+}
+
 <div
-  className="react-tail-text "
+  className="react-tail-text c0"
   onDoubleClick={[Function]}
-  style={
-    Object {
-      "whiteSpace": "nowrap",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="react-tail-text__fulltext"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-      }
-    }
+    className="c1 react-tail-text__tail"
   >
     Краткость - сестра таланта
   </div>
   <div
-    className="react-tail-text__start"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
-  >
-    
-  </div>
-  <div
-    className="react-tail-text__tail"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
+    className="c2 react-tail-text__fulltext"
   >
     Краткость - сестра таланта
   </div>
@@ -217,110 +245,124 @@ exports[`Выводится предупреждение о некорректн
 `;
 
 exports[`Кастомный className добавляется к элементу 1`] = `
+.c1 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c0 {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.c0:hover {
+  color: red;
+}
+
+.c0:focus-within {
+  color: blue;
+}
+
+.c0:active {
+  color: purple;
+}
+
+.c0.react-tail-text_tailed::after {
+  content: "ьзя";
+}
+
+.c2 {
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.c2.react-tail-text__fulltext_selected {
+  background: yellow;
+}
+
 <div
-  className="react-tail-text hello"
+  className="react-tail-text c0 hello"
   onDoubleClick={[Function]}
-  style={
-    Object {
-      "whiteSpace": "nowrap",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="react-tail-text__fulltext"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-      }
-    }
-  >
-    Модифицировать вшитые классы пока нельзя
-  </div>
-  <div
-    className="react-tail-text__start"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
-  >
-    Модифицировать вшитые классы пока нел
-  </div>
-  <div
-    className="react-tail-text__tail"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
+    className="c1 react-tail-text__tail"
   >
     ьзя
+  </div>
+  <div
+    className="c2 react-tail-text__fulltext"
+  >
+    Модифицировать вшитые классы пока нельзя
   </div>
 </div>
 `;
 
 exports[`Текст подскази при наведении добавлен в атрибут title 1`] = `
+.c1 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c0 {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.c0:hover {
+  color: red;
+}
+
+.c0:focus-within {
+  color: blue;
+}
+
+.c0:active {
+  color: purple;
+}
+
+.c0.react-tail-text_tailed::after {
+  content: "tle";
+}
+
+.c2 {
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.c2.react-tail-text__fulltext_selected {
+  background: yellow;
+}
+
 <div
-  className="react-tail-text "
+  className="react-tail-text c0"
   onDoubleClick={[Function]}
-  style={
-    Object {
-      "whiteSpace": "nowrap",
-      "width": "100%",
-    }
-  }
   title="А вот и сама подсказка"
 >
   <div
-    className="react-tail-text__fulltext"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-      }
-    }
-  >
-    Подсказка при наведении добавлена к wrapper элементу в тег title
-  </div>
-  <div
-    className="react-tail-text__start"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "textOverflow": "ellipsis",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
-  >
-    Подсказка при наведении добавлена к wrapper элементу в тег ti
-  </div>
-  <div
-    className="react-tail-text__tail"
-    style={
-      Object {
-        "display": "inline-block",
-        "overflow": "hidden",
-        "whiteSpace": "nowrap",
-        "width": 0,
-      }
-    }
+    className="c1 react-tail-text__tail"
   >
     tle
+  </div>
+  <div
+    className="c2 react-tail-text__fulltext"
+  >
+    Подсказка при наведении добавлена к wrapper элементу в тег title
   </div>
 </div>
 `;

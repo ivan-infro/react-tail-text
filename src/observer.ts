@@ -1,48 +1,40 @@
 import { ResizeObserver as ResizeObserverPonyfill } from "@juggle/resize-observer";
 import throttle from "lodash.throttle";
+import { fulltextClassName, fulltextSelectedClassName } from "./constants";
+
+let selectionChangeEventHandlerAdded = false;
 
 const ResizeObserver = window.ResizeObserver || ResizeObserverPonyfill;
 const IntersectionObserver = window.IntersectionObserver;
 
-type SubscriberData = {
-  fulltextWidth: number;
-  fulltextElement: HTMLElement;
-  tailWidth: number;
-  tailElement: HTMLElement;
-  startElement: HTMLElement;
-};
-
-const subscribers = new WeakMap<Element, SubscriberData>();
+type isActive = boolean;
+const subscribers = new WeakMap<Element, isActive>();
 
 const updateCurrentState = (target: Element) => {
-  const subscriberData = subscribers.get(target);
-  if (!subscriberData) return;
+  const subscriber = subscribers.get(target);
+  if (!subscriber) return;
 
-  const {
-    fulltextWidth,
-    tailWidth,
-    fulltextElement,
-    tailElement,
-    startElement,
-  } = subscriberData;
-  const enoughSpace = target.clientWidth >= fulltextWidth;
+  const tailElement = target.firstElementChild;
+  const fulltextElement = target.lastElementChild;
+  if (!fulltextElement || !tailElement) {
+    console.error("react-tail-text's element not found");
+    return;
+  }
 
-  if (enoughSpace && tailElement.style.visibility !== "none") {
-    fulltextElement.style.width = "auto";
-    fulltextElement.style.visibility = "visible";
+  const tailed = target.classList.contains("react-tail-text_tailed");
+  const enoughSpace = fulltextElement.scrollWidth <= target.clientWidth;
 
-    startElement.style.width = "0px";
-    startElement.style.visibility = "none";
-    tailElement.style.width = "0px";
-    tailElement.style.visibility = "none";
-  } else {
-    fulltextElement.style.width = "0px";
-    fulltextElement.style.visibility = "none";
+  if (enoughSpace && tailed) {
+    target.classList.remove("react-tail-text_tailed");
+    (fulltextElement as HTMLElement).style.width = "auto";
+  } else if (!enoughSpace) {
+    if (!tailed) {
+      target.classList.add("react-tail-text_tailed");
+    }
 
-    startElement.style.width = `${target.clientWidth - tailWidth}px`;
-    startElement.style.visibility = "visible";
-    tailElement.style.width = `${tailWidth}px`;
-    tailElement.style.visibility = "visible";
+    (fulltextElement as HTMLElement).style.width = `${
+      target.clientWidth - tailElement.scrollWidth
+    }px`;
   }
 };
 
@@ -52,7 +44,7 @@ const resizeHandler: ResizeObserverCallback = (entries) => {
   }
 };
 
-const throttledHandler = throttle(resizeHandler, 20);
+const throttledHandler = throttle(resizeHandler, 1000 / 60);
 const resizeObserver = new ResizeObserver(throttledHandler);
 
 let intersectionObserver: IntersectionObserver | undefined;
@@ -72,17 +64,28 @@ if (typeof IntersectionObserver !== "undefined") {
   intersectionObserver = new IntersectionObserver(intersectionHandler);
 } else {
   console.warn(
-    "В браузере отсутствует поддержка IntersectionObserver. Производительность react-tail-text может быть снижена"
+    "IntersectionObserver is not defined. react-tail-text perfomance may be affected"
   );
 }
 
+function addSelectionChangeEventHandler() {
+  selectionChangeEventHandlerAdded = true;
+  document.addEventListener("selectionchange", () => {
+    const selection = document.getSelection();
+    const fulltextElement = selection?.focusNode?.parentElement;
+
+    document
+      .querySelectorAll(`.${fulltextSelectedClassName}`)
+      .forEach((e) => e.classList.remove(fulltextSelectedClassName));
+
+    if (fulltextElement?.classList.contains(fulltextClassName)) {
+      fulltextElement.classList.add(fulltextSelectedClassName);
+    }
+  });
+}
+
 export default function addToObserver(
-  wrapperElement: HTMLElement,
-  fulltextElement: HTMLElement,
-  fulltextWidth: number,
-  tailElement: HTMLElement,
-  tailWidth: number,
-  startElement: HTMLElement,
+  wrapperElement: Element
 ): (() => void) | undefined {
   if (subscribers.has(wrapperElement)) {
     console.warn("Element already subscribed");
@@ -90,14 +93,11 @@ export default function addToObserver(
     return;
   }
 
-  subscribers.set(wrapperElement, {
-    fulltextElement,
-    fulltextWidth,
-    tailElement,
-    tailWidth,
-    startElement,
-  });
+  if (!selectionChangeEventHandlerAdded) {
+    addSelectionChangeEventHandler();
+  }
 
+  subscribers.set(wrapperElement, true);
   if (intersectionObserver) {
     intersectionObserver.observe(wrapperElement);
   } else {
@@ -105,6 +105,7 @@ export default function addToObserver(
   }
 
   return () => {
+    console.log("remove observer");
     subscribers.delete(wrapperElement);
     resizeObserver.unobserve(wrapperElement);
     intersectionObserver?.unobserve(wrapperElement);

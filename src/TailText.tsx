@@ -1,6 +1,14 @@
-import React, { memo, useEffect, useCallback, useRef, useMemo } from "react";
+import React, { MouseEventHandler, useEffect, useRef, useMemo } from "react";
+import styled from "styled-components";
+import memoize from "lodash.memoize";
 import addToObserver from "./observer";
-import { fulltextStyle, startStyle, tailStyle, wrapperStyle } from "./styles";
+import {
+  fulltextClassName,
+  tailClassName,
+  wrapperClassName,
+  wrapperTailedClassName,
+} from "./constants";
+import { InvisibleTail } from "./InvisibleTail";
 
 type TailTextPros = {
   /**
@@ -26,93 +34,95 @@ type TailTextPros = {
   className?: string;
 };
 
-const fulltextClassName = "react-tail-text__fulltext";
-const startClassName = "react-tail-text__start";
-const tailClassName = "react-tail-text__tail";
+const selectFulltext: MouseEventHandler<HTMLDivElement> = (event) => {
+  if (typeof window === "undefined") return;
+  window.getSelection()?.selectAllChildren(event.currentTarget);
+};
 
-const TailText = (props: TailTextPros) => {
+const getTail = memoize((fulltext: number | string, tailLength: number) => {
+  const str = fulltext.toString();
+  if (tailLength > str.length) {
+    console.warn("tailLength не может быть больше длины исходной строки!");
+  }
+  return str.substring(str.length - tailLength);
+});
+
+const StyledTailText = styled(TailText)`
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+
+  &:hover {
+    color: red;
+  }
+
+  &:focus-within {
+    color: blue;
+  }
+
+  &:active {
+    color: purple;
+  }
+
+  &.${wrapperTailedClassName}::after {
+    content: "${(props) => getTail(props.children, props.tailLength)}";
+  }
+`;
+
+type FulltextProps = {
+  tailWidth?: number;
+  className?: string;
+  children: string | number;
+};
+
+const Fulltext = (props: FulltextProps) => {
+  return <div {...props}>{props.children}</div>;
+};
+
+const StyledFulltext = styled(Fulltext)`
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: top;
+
+  &.react-tail-text__fulltext_selected {
+    background: yellow;
+  }
+`;
+
+function TailText(props: TailTextPros) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const selectFulltext = useCallback(() => {
-    if (!wrapperRef.current || typeof window === "undefined") return;
-    window.getSelection()?.selectAllChildren(wrapperRef.current);
-  }, [wrapperRef.current]);
-
-  const [start, tail] = useMemo(() => {
-    const fulltextString = props.children.toString();
-
-    if (props.tailLength > fulltextString.length) {
-      console.warn("tailLength не может быть больше длины исходной строки!");
-    }
-
-    return [
-      fulltextString.substr(0, fulltextString.length - props.tailLength),
-
-      fulltextString.substr(
-        fulltextString.length - props.tailLength,
-        props.tailLength
-      ),
-    ];
-  }, [props.tailLength, props.children]);
+  const tail = getTail(props.children, props.tailLength);
 
   useEffect(() => {
     if (!wrapperRef.current) {
-      console.warn("wrapperRef is null");
+      console.warn("wrapperRef.current is null!");
       return;
     }
-
-    const fulltextElement = wrapperRef.current.querySelector<HTMLDivElement>(
-      `.${fulltextClassName}`
-    );
-
-    const startElement = wrapperRef.current.querySelector<HTMLDivElement>(
-      `.${startClassName}`
-    );
-
-    const tailElement = wrapperRef.current.querySelector<HTMLDivElement>(
-      `.${tailClassName}`
-    );
-    if (!fulltextElement || !tailElement || !startElement) {
-      console.error("fulltextElement или tailElement не найдены");
-      return;
-    }
-    const fulltextWidth = fulltextElement.scrollWidth;
-    const tailWidth = tailElement.scrollWidth;
-
-    return addToObserver(
-      wrapperRef.current,
-      fulltextElement,
-      fulltextWidth,
-      tailElement,
-      tailWidth,
-      startElement
-    );
-  }, [props.tailLength, props.children, props.className, wrapperRef.current]);
+    return addToObserver(wrapperRef.current);
+  }, []);
 
   const className = useMemo(
-    () => "react-tail-text " + (props.className || ""),
+    () => [wrapperClassName, props.className].join(" "),
     [props.className]
   );
 
   return (
     <div
+      className={className}
       title={props.title}
       ref={wrapperRef}
-      className={className}
-      style={wrapperStyle}
       onDoubleClick={selectFulltext}
     >
-      <div className={fulltextClassName} style={fulltextStyle}>
+      <InvisibleTail className={tailClassName}>{tail}</InvisibleTail>
+      <StyledFulltext className={fulltextClassName}>
         {props.children}
-      </div>
-      <div className={startClassName} style={startStyle}>
-        {start}
-      </div>
-      <div className={tailClassName} style={tailStyle}>
-        {tail}
-      </div>
+      </StyledFulltext>
     </div>
   );
-};
+}
 
-export default memo(TailText);
+export default StyledTailText;
