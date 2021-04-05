@@ -11,20 +11,8 @@ exports[`children - это не только ценный актив, но и т
 
 .c0 {
   white-space: nowrap;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-}
-
-.c0:hover {
-  color: red;
-}
-
-.c0:focus-within {
-  color: blue;
-}
-
-.c0:active {
-  color: purple;
 }
 
 .c0.react-tail-text_tailed::after {
@@ -72,20 +60,8 @@ exports[`it is alive 1`] = `
 
 .c0 {
   white-space: nowrap;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-}
-
-.c0:hover {
-  color: red;
-}
-
-.c0:focus-within {
-  color: blue;
-}
-
-.c0:active {
-  color: purple;
 }
 
 .c0.react-tail-text_tailed::after {
@@ -133,20 +109,8 @@ exports[`it is alive 2`] = `
 
 .c0 {
   white-space: nowrap;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-}
-
-.c0:hover {
-  color: red;
-}
-
-.c0:focus-within {
-  color: blue;
-}
-
-.c0:active {
-  color: purple;
 }
 
 .c0.react-tail-text_tailed::after {
@@ -194,20 +158,8 @@ exports[`Выводится предупреждение о некорректн
 
 .c0 {
   white-space: nowrap;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-}
-
-.c0:hover {
-  color: red;
-}
-
-.c0:focus-within {
-  color: blue;
-}
-
-.c0:active {
-  color: purple;
 }
 
 .c0.react-tail-text_tailed::after {
@@ -255,20 +207,8 @@ exports[`Кастомный className добавляется к элементу
 
 .c0 {
   white-space: nowrap;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-}
-
-.c0:hover {
-  color: red;
-}
-
-.c0:focus-within {
-  color: blue;
-}
-
-.c0:active {
-  color: purple;
 }
 
 .c0.react-tail-text_tailed::after {
@@ -316,20 +256,8 @@ exports[`Текст подскази при наведении добавлен 
 
 .c0 {
   white-space: nowrap;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-}
-
-.c0:hover {
-  color: red;
-}
-
-.c0:focus-within {
-  color: blue;
-}
-
-.c0:active {
-  color: purple;
 }
 
 .c0.react-tail-text_tailed::after {
