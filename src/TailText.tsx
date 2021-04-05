@@ -95,11 +95,14 @@ function TailText(props: TailTextPros) {
   }, []);
 
   useEffect(() => {
-    if (!wrapperRef.current) {
-      console.warn("wrapperRef.current is null!");
-      return;
-    }
-    updateCurrentState(wrapperRef.current);
+    setTimeout(() => {
+      if (!wrapperRef.current) {
+        console.warn("wrapperRef.current is null!");
+        return;
+      }
+
+      updateCurrentState(wrapperRef.current);
+    }, 0);
   }, [props.children, props.className, props.tailLength]);
 
   const className = useMemo(
