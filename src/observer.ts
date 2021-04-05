@@ -82,7 +82,7 @@ function addSelectionChangeEventHandler() {
       nodes[i].classList.remove(fulltextSelectedClassName);
     }
 
-    if (fulltextElement?.classList.contains(fulltextSelectListenerClassName)) {
+    if (fulltextElement?.classList.contains(fulltextSelectListenerClassName) && selection?.toString().length) {
       fulltextElement.classList.add(fulltextSelectedClassName);
     }
   });
