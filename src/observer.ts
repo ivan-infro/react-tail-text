@@ -1,6 +1,9 @@
 import { ResizeObserver as ResizeObserverPonyfill } from "@juggle/resize-observer";
 import throttle from "lodash.throttle";
-import { fulltextClassName, fulltextSelectedClassName } from "./constants";
+import {
+  fulltextSelectedClassName,
+  fulltextSelectListenerClassName,
+} from "./constants";
 
 let selectionChangeEventHandlerAdded = false;
 
@@ -10,7 +13,7 @@ const IntersectionObserver = window.IntersectionObserver;
 type isActive = boolean;
 const subscribers = new WeakMap<Element, isActive>();
 
-const updateCurrentState = (target: Element) => {
+export const updateCurrentState = (target: Element): void => {
   const subscriber = subscribers.get(target);
   if (!subscriber) return;
 
@@ -78,7 +81,7 @@ function addSelectionChangeEventHandler() {
       .querySelectorAll(`.${fulltextSelectedClassName}`)
       .forEach((e) => e.classList.remove(fulltextSelectedClassName));
 
-    if (fulltextElement?.classList.contains(fulltextClassName)) {
+    if (fulltextElement?.classList.contains(fulltextSelectListenerClassName)) {
       fulltextElement.classList.add(fulltextSelectedClassName);
     }
   });
@@ -105,7 +108,6 @@ export default function addToObserver(
   }
 
   return () => {
-    console.log("remove observer");
     subscribers.delete(wrapperElement);
     resizeObserver.unobserve(wrapperElement);
     intersectionObserver?.unobserve(wrapperElement);

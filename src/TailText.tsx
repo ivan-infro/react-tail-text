@@ -1,9 +1,12 @@
 import React, { MouseEventHandler, useEffect, useRef, useMemo } from "react";
 import styled from "styled-components";
 import memoize from "lodash.memoize";
-import addToObserver from "./observer";
+import cn from "classnames";
+
+import addToObserver, { updateCurrentState } from "./observer";
 import {
   fulltextClassName,
+  fulltextSelectListenerClassName,
   tailClassName,
   wrapperClassName,
   wrapperTailedClassName,
@@ -32,6 +35,11 @@ type TailTextPros = {
    * Дополнительный className для элемента-обертки
    */
   className?: string;
+
+  /**
+   * Выделяет строку целиком, если выделена ее часть
+   */
+  highlightOnSelection?: boolean;
 };
 
 const selectFulltext: MouseEventHandler<HTMLDivElement> = (event) => {
@@ -39,47 +47,28 @@ const selectFulltext: MouseEventHandler<HTMLDivElement> = (event) => {
   window.getSelection()?.selectAllChildren(event.currentTarget);
 };
 
-const getTail = memoize((fulltext: number | string, tailLength: number) => {
-  const str = fulltext.toString();
-  if (tailLength > str.length) {
-    console.warn("tailLength не может быть больше длины исходной строки!");
-  }
-  return str.substring(str.length - tailLength);
-});
+const getTail = memoize(
+  (fulltext: number | string, tailLength: number) => {
+    const str = fulltext.toString();
+    if (tailLength > str.length) {
+      console.warn("tailLength не может быть больше длины исходной строки!");
+    }
+    return str.substring(str.length - tailLength);
+  },
+  (fulltext, tailLength) => `${tailLength}_${fulltext}`
+);
 
 const StyledTailText = styled(TailText)`
   white-space: nowrap;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-
-  &:hover {
-    color: red;
-  }
-
-  &:focus-within {
-    color: blue;
-  }
-
-  &:active {
-    color: purple;
-  }
 
   &.${wrapperTailedClassName}::after {
     content: "${(props) => getTail(props.children, props.tailLength)}";
   }
 `;
 
-type FulltextProps = {
-  tailWidth?: number;
-  className?: string;
-  children: string | number;
-};
-
-const Fulltext = (props: FulltextProps) => {
-  return <div {...props}>{props.children}</div>;
-};
-
-const StyledFulltext = styled(Fulltext)`
+const Fulltext = styled.div`
   display: inline-block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -105,23 +94,37 @@ function TailText(props: TailTextPros) {
     return addToObserver(wrapperRef.current);
   }, []);
 
+  useEffect(() => {
+    if (!wrapperRef.current) {
+      console.warn("wrapperRef.current is null!");
+      return;
+    }
+    updateCurrentState(wrapperRef.current);
+  }, [props.children, props.className, props.tailLength]);
+
   const className = useMemo(
     () => [wrapperClassName, props.className].join(" "),
     [props.className]
   );
 
   return (
-    <div
-      className={className}
-      title={props.title}
-      ref={wrapperRef}
-      onDoubleClick={selectFulltext}
-    >
-      <InvisibleTail className={tailClassName}>{tail}</InvisibleTail>
-      <StyledFulltext className={fulltextClassName}>
-        {props.children}
-      </StyledFulltext>
-    </div>
+    <>
+      <div
+        className={className}
+        title={props.title}
+        ref={wrapperRef}
+        onDoubleClick={selectFulltext}
+      >
+        <InvisibleTail className={tailClassName}>{tail}</InvisibleTail>
+        <Fulltext
+          className={cn(fulltextClassName, {
+            [fulltextSelectListenerClassName]: props.highlightOnSelection,
+          })}
+        >
+          {props.children}
+        </Fulltext>
+      </div>
+    </>
   );
 }
 
