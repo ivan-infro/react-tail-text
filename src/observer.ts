@@ -77,9 +77,10 @@ function addSelectionChangeEventHandler() {
     const selection = document.getSelection();
     const fulltextElement = selection?.focusNode?.parentElement;
 
-    document
-      .querySelectorAll(`.${fulltextSelectedClassName}`)
-      .forEach((e) => e.classList.remove(fulltextSelectedClassName));
+    const nodes = document.querySelectorAll(`.${fulltextSelectedClassName}`);
+    for (let i = 0, l = nodes.length; i < l; ++i) {
+      nodes[i].classList.remove(fulltextSelectedClassName);
+    }
 
     if (fulltextElement?.classList.contains(fulltextSelectListenerClassName)) {
       fulltextElement.classList.add(fulltextSelectedClassName);
