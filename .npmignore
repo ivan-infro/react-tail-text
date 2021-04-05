@@ -5,3 +5,4 @@ src
 .prettierignore
 .prettierrc
 example
+.parcel-cache
